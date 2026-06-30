@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American Shoe Store Ahuachapán</title>
+
+<script>
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.addEventListener("load", () => setTimeout(() => window.scrollTo(0,0), 20));
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#080808;color:white;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.08),transparent 30%),radial-gradient(circle at 80% 10%,rgba(255,0,0,.13),transparent 25%);z-index:-1}
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-size:22px;font-weight:900;letter-spacing:3px}
+.logo span{color:#ff2b2b}
+nav a{color:white;text-decoration:none;margin-left:24px;font-weight:800;font-size:14px}
+nav a:hover{color:#ff2b2b}
+.hero{min-height:100vh;padding:120px 8% 70px;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.hero small{display:inline-block;background:rgba(255,255,255,.1);padding:10px 17px;border-radius:30px;margin-bottom:20px}
+.hero h1{font-size:62px;line-height:1;text-transform:uppercase}
+.hero h1 span{color:#ff2b2b}
+.hero p{color:#cfcfcf;font-size:19px;line-height:1.7;margin:22px 0}
+.btn{display:inline-block;background:#ff2b2b;color:white;padding:15px 24px;border-radius:40px;text-decoration:none;font-weight:900;margin-right:10px;box-shadow:0 0 25px rgba(255,43,43,.35)}
+.btn.white{background:white;color:#000}
+.hero-img{border-radius:34px;overflow:hidden;border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.hero-img img{width:100%;height:520px;object-fit:cover;display:block}
+section{padding:80px 8%}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title span{color:#ff2b2b;font-weight:900;letter-spacing:2px}
+.section-title h2{font-size:42px;margin-top:10px}
+.carousel-section{margin-bottom:75px}
+.carousel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.carousel-head h2{font-size:34px}
+.controls button{background:#ff2b2b;color:white;border:0;width:42px;height:42px;border-radius:50%;font-size:20px;font-weight:900;cursor:pointer;margin-left:8px}
+.slider{display:flex;gap:22px;overflow-x:auto;scroll-behavior:smooth;padding:10px 0 25px}
+.slider::-webkit-scrollbar{height:8px}
+.slider::-webkit-scrollbar-thumb{background:#ff2b2b;border-radius:20px}
+.product{min-width:260px;background:linear-gradient(180deg,#181818,#0f0f0f);border:1px solid rgba(255,255,255,.09);border-radius:26px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.35);transition:.3s}
+.product:hover{transform:translateY(-8px);border-color:rgba(255,43,43,.6)}
+.product img{width:100%;height:260px;object-fit:cover;display:block;cursor:pointer}
+.product-content{padding:20px}
+.product-content h3{font-size:20px;margin-bottom:10px}
+.product-content p{color:#aaa;line-height:1.5;margin-bottom:15px}
+.whats{display:block;text-align:center;background:#25d366;color:white;text-decoration:none;padding:12px;border-radius:30px;font-weight:900}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about img{width:100%;height:440px;object-fit:cover;border-radius:28px;border:1px solid rgba(255,255,255,.15)}
+.about h2{font-size:40px;margin-bottom:15px}
+.about p{color:#cfcfcf;line-height:1.8}
+.contact{background:linear-gradient(135deg,#151515,#080808);border:1px solid rgba(255,255,255,.12);border-radius:35px;padding:45px;text-align:center}
+.contact h2{font-size:40px;margin-bottom:15px}
+.contact p{color:#ccc;margin-bottom:25px}
+.float-wsp{position:fixed;right:22px;bottom:22px;background:#25d366;color:white;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:30px;z-index:1000;box-shadow:0 0 25px rgba(37,211,102,.5)}
+footer{text-align:center;background:#000;color:#888;padding:28px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox img{max-width:95%;max-height:90%;border-radius:20px}
+.lightbox span{position:absolute;top:25px;right:35px;font-size:40px;cursor:pointer}
+@media(max-width:900px){
+nav{display:none}
+.hero{grid-template-columns:1fr;padding:110px 5% 50px}
+.hero h1{font-size:42px}
+section{padding:60px 5%}
+.about{grid-template-columns:1fr}
+.product{min-width:210px}
+.product img{height:220px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">AMERICAN <span>SHOE</span> STORE</div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main class="hero" id="inicio">
+  <div>
+    <small>📍 Ahuachapán Centro • Envíos a nivel nacional</small>
+    <h1>Estilo para <span>caminar diferente</span></h1>
+    <p>Calzado, ropa deportiva, tacos y calcetines. Consulta disponibilidad, tallas y precios directamente por WhatsApp.</p>
+    <a class="btn" href="#catalogo">Ver catálogo</a>
+    <a class="btn white" href="#contacto">Contactar</a>
+  </div>
+  <div class="hero-img">
+    <img src="local.png" alt="Local American Shoe Store">
+  </div>
+</main>
+
+<section id="catalogo">
+  <div class="section-title">
+    <span>CATÁLOGO</span>
+    <h2>Productos disponibles</h2>
+  </div>
+
+  <div id="contenedor-catalogo"></div>
+</section>
+
+<section id="nosotros">
+  <div class="about">
+    <img src="local.png" alt="Local">
+    <div>
+      <h2>American Shoe Store Ahuachapán</h2>
+      <p>Tienda ubicada en Ahuachapán Centro, enfocada en zapatos, tacos, ropa deportiva y calcetines. Esta página demo muestra sus productos por categorías con carruseles profesionales.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contact">
+    <h2>Consulta tallas y disponibilidad</h2>
+    <p>Escríbenos para preguntar por precios, tallas o envíos.</p>
+    <a class="btn" href="https://wa.me/50370459080" target="_blank">WhatsApp 7045-9080</a>
+  </div>
+</section>
+
+<a class="float-wsp" href="https://wa.me/50370459080" target="_blank">✆</a>
+
+<footer>
+  © 2026 American Shoe Store Ahuachapán
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <span onclick="cerrarImagen()">×</span>
+  <img id="lightboxImg" src="">
+</div>
+
+<script>
+const productos = [
+  {
+    categoria: "Zapatos",
+    emoji: "👟",
+    items: [
+      ["Blancos", "Zapatos/Blancos.jpg"],
+      ["Negro y blanco", "Zapatos/Negro y blanco.jpg"],
+      ["Negro y rojo", "Zapatos/Negro y rojo.jpg"],
+      ["Negros", "Zapatos/Negros.jpg"],
+      ["Rayas blancas", "Zapatos/Rayas blancas.jpg"]
+    ]
+  },
+  {
+    categoria: "Tacos",
+    emoji: "⚽",
+    items: [
+      ["Tacos modelo 1", "Tacos/701019908_1469826868493160_6398768621747574363_n.jpg"],
+      ["Tacos modelo 2", "Tacos/701420765_1469828035159710_7988714145263743451_n.jpg"],
+      ["Tacos modelo 3", "Tacos/702375691_1469827641826416_6766477138107721166_n.jpg"],
+      ["Tacos modelo 4", "Tacos/702398854_1469827295159784_3848713207732867686_n.jpg"],
+      ["Tacos modelo 5", "Tacos/702509169_1469827558493091_1069299029170410046_n.jpg"]
+    ]
+  },
+  {
+    categoria: "Ropa",
+    emoji: "👕",
+    items: [
+      ["Argentina", "Ropa/Argentina.jpg"],
+      ["Brasil", "Ropa/Brasil.jpg"],
+      ["Camisa azul", "Ropa/Camisa azul.jpg"],
+      ["Camisa blanca", "Ropa/Camisa blanca.jpg"],
+      ["Camisa negra", "Ropa/Camisa negra.jpg"]
+    ]
+  },
+  {
+    categoria: "Calcetines",
+    emoji: "🧦",
+    items: [
+      ["Calcetines modelo 1", "Calcetines/724738989_1498932655582581_6308275672079637212_n.jpg"],
+      ["Calcetines modelo 2", "Calcetines/724824639_1498934025582444_6634714754176733427_n.jpg"],
+      ["Calcetines modelo 3", "Calcetines/724912503_1498933582249155_3956107988050199025_n.jpg"],
+      ["Calcetines modelo 4", "Calcetines/724958619_1498933408915839_722693208572281637_n.jpg"],
+      ["Calcetines modelo 5", "Calcetines/726269974_1498933758915804_4935439537892664601_n.jpg"]
+    ]
+  }
+];
+
+const contenedor = document.getElementById("contenedor-catalogo");
+
+productos.forEach((grupo, index) => {
+  const id = "slider" + index;
+
+  let html = `
+  <div class="carousel-section">
+    <div class="carousel-head">
+      <h2>${grupo.emoji} ${grupo.categoria}</h2>
+      <div class="controls">
+        <button onclick="mover('${id}', -1)">‹</button>
+        <button onclick="mover('${id}', 1)">›</button>
+      </div>
+    </div>
+
+    <div class="slider" id="${id}">
+  `;
+
+  grupo.items.forEach(item => {
+    html += `
+      <article class="product">
+        <img src="${item[1]}" alt="${item[0]}" onclick="abrirImagen('${item[1]}')">
+        <div class="product-content">
+          <h3>${item[0]}</h3>
+          <p>Consulta tallas, precio y disponibilidad por WhatsApp.</p>
+          <a class="whats" target="_blank" href="https://wa.me/50370459080?text=Hola,%20quiero%20información%20sobre%20${encodeURIComponent(item[0])}">Consultar</a>
+        </div>
+      </article>
+    `;
+  });
+
+  html += `
+    </div>
+  </div>
+  `;
+
+  contenedor.innerHTML += html;
+});
+
+function mover(id, direccion){
+  const slider = document.getElementById(id);
+  slider.scrollBy({
+    left: direccion * 300,
+    behavior: "smooth"
+  });
+}
+
+function abrirImagen(src){
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function cerrarImagen(){
+  document.getElementById("lightbox").style.display = "none";
+}
+
+setInterval(() => {
+  document.querySelectorAll(".slider").forEach(slider => {
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+      slider.scrollTo({left:0, behavior:"smooth"});
+    } else {
+      slider.scrollBy({left:300, behavior:"smooth"});
+    }
+  });
+}, 3500);
+</script>
+
+</body>
+</html>
